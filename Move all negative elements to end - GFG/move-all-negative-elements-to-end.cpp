@@ -43,3 +43,25 @@ int main() {
 }
 
 // } Driver Code Ends
+
+
+
+
+
+
+
+// solution 2 : time complexity O(n^2)
+    void segregateElements(int arr[],int n)
+    {
+        // Your code goes here
+        int idx=0;
+        for(int i=0;i<n-idx;i++){
+            if(arr[i]<0){
+                for(int j=i+1;j<n;j++){
+                    swap(arr[j], arr[j-1]);
+                }
+                if(arr[i]<0)    i--;
+                idx++;
+            }
+        }
+    }
