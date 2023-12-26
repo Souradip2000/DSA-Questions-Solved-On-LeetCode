@@ -5,13 +5,11 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int countSquares(int N) {
+    int countSquares(int n) {
         // code here
-        int cnt=0;
-        for(int i=1;i<sqrt(N);i++){
-            cnt++;
-        }
-        return cnt;
+        int temp=floor(sqrt(n));
+        if(sqrt(n)>temp)    return temp;
+        return temp-1;
     }
 };
 
