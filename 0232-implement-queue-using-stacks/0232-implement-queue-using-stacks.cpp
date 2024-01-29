@@ -1,26 +1,49 @@
 class MyQueue {
 public:
-    vector<int> arr;
+    stack<int> st1;
+    stack<int> st2;
     MyQueue() {
         
     }
     
     void push(int x) {
-        arr.push_back(x);
+        st1.push(x);
     }
     
     int pop() {
-       int ele = arr[0];
-        arr.erase(arr.begin());
-        return ele;
+      while(!st1.empty()){
+          int ele=st1.top();
+          st2.push(ele);
+          st1.pop();
+      } 
+        int ans=st2.top();
+      st2.pop();
+        while(!st2.empty()){
+            int ele=st2.top();
+            st1.push(ele);
+            st2.pop();
+        }
+       return ans; 
     }
     
     int peek() {
-       return arr[0]; 
+      while(!st1.empty()){
+          int ele=st1.top();
+          st2.push(ele);
+          st1.pop();
+      } 
+        int ans=st2.top();
+      //st2.pop();
+        while(!st2.empty()){
+            int ele=st2.top();
+            st1.push(ele);
+            st2.pop();
+        }
+       return ans;         
     }
     
     bool empty() {
-        if(arr.size()==0) return true;
+       if(st1.empty() ) return true;
         return false;
     }
 };
