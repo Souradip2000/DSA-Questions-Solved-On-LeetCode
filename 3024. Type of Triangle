@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string triangleType(vector<int>& nums) {
+        string ans;
+        unordered_set<int> st;
+        for(int i: nums) st.insert(i);
+        int n=st.size();
+        switch(n){
+            case 1:
+                ans="equilateral";
+                break;
+            case 2:
+                ans="isosceles";
+                break;
+            case 3:
+                ans="scalene";
+                break;
+        }
+        sort(nums.begin(), nums.end());
+        if(nums[0]+nums[1]<=nums[2]) ans="none";
+        return ans;
+    }
+};
